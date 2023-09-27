@@ -1,4 +1,3 @@
-name: otherstuff
 
 include:
   - ../common/compose.yml

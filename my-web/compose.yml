@@ -1,4 +1,3 @@
-name: my-web
 
 include:
   - ../common/compose.yml
