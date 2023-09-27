@@ -1,0 +1,16 @@
+name: otherstuff
+
+include:
+  - ../common/compose.yml
+
+services:
+  other-stuff:
+    image: nginx:1.25
+    labels:
+      - "traefik.http.routers.other-stuff.rule=Host(`other-stuff.docker.localhost`)"
+    volumes:
+      - /data/test/other-stuff:/usr/share/nginx/html:ro
+    deploy:
+      replicas: 1
+    networks:
+      - frontend

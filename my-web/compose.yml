@@ -1,0 +1,16 @@
+name: my-web
+
+include:
+  - ../common/compose.yml
+
+services:
+  my-web:
+    image: nginx:1.25
+    labels:
+      - "traefik.http.routers.my-web.rule=Host(`my-web.docker.localhost`)"
+    volumes:
+      - /data/test/my-web:/usr/share/nginx/html:ro
+    deploy:
+      replicas: 2
+    networks:
+      - frontend

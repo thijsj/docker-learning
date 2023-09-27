@@ -13,12 +13,10 @@ services:
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - frontend
 
-  whoami:
-    # A container that exposes an API to show its IP address
-    image: traefik/whoami
-    labels:
-      - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
-    deploy:
-      replicas: 2
-
+networks:
+  frontend:
+    name: global-frontend
+    external: true
