@@ -8,7 +8,7 @@ services:
     labels:
       - "traefik.http.routers.other-stuff.rule=Host(`other-stuff.docker.localhost`)"
     volumes:
-      - /data/test/other-stuff:/usr/share/nginx/html:ro
+      - ./data:/usr/share/nginx/html:ro
     deploy:
       replicas: 1
     networks:

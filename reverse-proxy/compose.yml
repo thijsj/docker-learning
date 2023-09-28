@@ -1,6 +1,7 @@
 
-include:
-  - ../common/compose.yml
+networks:
+  frontend:
+    name: global-frontend
 
 services:
   the-reverse-proxy:

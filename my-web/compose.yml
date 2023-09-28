@@ -8,7 +8,7 @@ services:
     labels:
       - "traefik.http.routers.my-web.rule=Host(`my-web.docker.localhost`)"
     volumes:
-      - /data/test/my-web:/usr/share/nginx/html:ro
+      - ./data:/usr/share/nginx/html:ro
     deploy:
       replicas: 2
     networks:
