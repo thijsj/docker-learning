@@ -1,0 +1,9 @@
+
+api:
+  dashboard: true
+  insecure: true
+
+providers:
+  docker:
+    # use label traefik.enable=true to expose a docker container
+    exposedByDefault: false

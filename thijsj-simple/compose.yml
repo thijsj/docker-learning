@@ -1,0 +1,14 @@
+
+include:
+  - ../common/compose.yml
+
+services:
+  simple-website:
+    image: thijsj/simple-container-website:0.0.1
+    ports:
+      - "18080:8080"
+    networks:
+      - frontend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.simple-website.rule=Host(`simple.docker.localhost`)"

@@ -6,6 +6,7 @@ services:
   my-web:
     image: nginx:1.25
     labels:
+      - "traefik.enable=true"
       - "traefik.http.routers.my-web.rule=Host(`my-web.docker.localhost`)"
     volumes:
       - ./data:/usr/share/nginx/html:ro
