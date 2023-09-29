@@ -7,10 +7,10 @@
 http:
   routers:
     Standalone:
-      rule: "Host(`standalone.docker.localhost`)"
+      rule: "Host(`standalone.docker.local`)"
       service: Standalone
     AloneTogether:
-      rule: "Host(`together.docker.localhost`)"
+      rule: "Host(`together.docker.local`)"
       service: Together
 
   services:

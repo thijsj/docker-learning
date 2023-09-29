@@ -3,6 +3,13 @@ api:
   dashboard: true
   insecure: true
 
+entryPoints:
+  web:
+    address: :80
+
+  websecure:
+    address: :443
+
 providers:
   docker:
     # use label traefik.enable=true to expose a docker container
@@ -12,3 +19,13 @@ providers:
     # alternative config, file based
     directory: /files.d
     watch: true
+
+certificateResolvers:
+  staging:
+    acme:
+      email: info@example.com
+      storage: /ssl-certs/acme.json
+      # Default: "https://acme-v02.api.letsencrypt.org/directory"
+      caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
+      httpChallenge:
+        entrypoint: web

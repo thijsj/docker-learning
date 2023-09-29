@@ -37,12 +37,26 @@ The reverse proxy compose file creates a global frontend network so the Traefik 
 
 I want to use Traefik in an existing situation where not all services are provided by docker instances and automatically exposed. Therefor I learned how to have multiple providers to *manually* add other services. In the traefik.yml configuration multiple providers are configured. The file provider will watch the [files.d](reverse-proxy/files.d) directory for services.
 
-
-## TODO
-
 ### Test out Let's Encrypt
 
 This can handle Let's Encrypt, beware to use the staging variant of Let's Encrypt so I don't get banned.
+
+The test setup I'm using is on a local Docker instance with no interface reachable from outside. So I'm skipping the Let's Encrypt testing for now.
+
+I've created an example on how the parts to add to the traefik.yml in [traefik-letsencrypt-example.yml](reverse-proxy/etc/traefik-letsencrypt-example.yml).
+
+To enable tls and the correct resolver you need to add the following to the labels section of the service in a compose file: 
+
+```yaml
+    labels:
+      - "traefik.http.routers.whoami.tls=true"
+      - "traefik.http.routers.whoami.tls.certresolver=staging"
+```
+
+
+
+## TODO
+
 
 ### Enable Dashboard in a secure way.
 
@@ -57,7 +71,7 @@ docker compose up -d
 
 To check if the service is working use curl:
 ```bash
-curl -H Host:my-web.docker.localhost http://127.0.0.1
+curl -H Host:my-web.docker.local http://127.0.0.1
 ```
 
 

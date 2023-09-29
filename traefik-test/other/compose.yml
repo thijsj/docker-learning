@@ -6,7 +6,7 @@ services:
   other-stuff:
     image: nginx:1.25
     labels:
-      - "traefik.http.routers.other-stuff.rule=Host(`other-stuff.docker.localhost`)"
+      - "traefik.http.routers.other-stuff.rule=Host(`other-stuff.docker.local`)"
     volumes:
       - ./data:/usr/share/nginx/html:ro
     deploy:

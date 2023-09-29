@@ -11,4 +11,4 @@ services:
       - frontend
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.simple-website.rule=Host(`simple.docker.localhost`)"
+      - "traefik.http.routers.simple-website.rule=Host(`simple.docker.local`)"

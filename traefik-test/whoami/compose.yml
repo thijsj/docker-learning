@@ -7,9 +7,11 @@ services:
   whoami:
     # A container that exposes an API to show its IP address
     image: traefik/whoami
+    command:
+      - "--name=${WHOAMI_NAME}"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.docker.local`)"
     deploy:
       replicas: 2
     networks:
