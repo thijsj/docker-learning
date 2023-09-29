@@ -54,11 +54,17 @@ To enable tls and the correct resolver you need to add the following to the labe
 ```
 
 
-
-## TODO
-
-
 ### Enable Dashboard in a secure way.
+
+Creating basicauth password using `htpasswd`.
+
+```bash
+docker run -it httpd htpasswd -nB username
+```
+This will prompt you for the password and result in something like: `username:$xx$xx$xxxxxxxxxxxxx$`
+
+Remove the api.insecure=true in the traefik.yml and add configuration for the api to have basic authentication. See [files.d/api.yml](reverse-proxy/files.d/api.yml).
+
 
 ## Basic Usage
 
