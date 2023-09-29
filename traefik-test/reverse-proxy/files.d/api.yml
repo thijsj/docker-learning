@@ -1,0 +1,14 @@
+
+http:
+  routers:
+    api:
+      rule: Host(`traefik.example.com`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
+      service: api@internal
+      middlewares:
+        - traefik-auth
+
+  middlewares:
+    traefik-auth:
+      basicAuth:
+        users:
+          - "test:$2y$05$Rx6jIEw5dsH8.zGvl3r37OhTCbxFN/yh2dA4P7uEGR1nQUBJNzlmG"

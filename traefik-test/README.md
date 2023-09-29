@@ -59,7 +59,7 @@ To enable tls and the correct resolver you need to add the following to the labe
 Creating basicauth password using `htpasswd`.
 
 ```bash
-docker run -it httpd htpasswd -nB username
+docker run -it --rm httpd htpasswd -nB username
 ```
 This will prompt you for the password and result in something like: `username:$xx$xx$xxxxxxxxxxxxx$`
 
