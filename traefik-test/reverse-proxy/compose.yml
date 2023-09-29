@@ -17,6 +17,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       # traefik configuration through an config file in etc/traefik.yml
       - ./etc/traefik.yml:/etc/traefik/traefik.yml
+
+      # files.d is used for file based provider
+      - ./files.d:/files.d
       # ssl certificates are persisten on disk
       - ssl-certs:/ssl-certs
     networks:

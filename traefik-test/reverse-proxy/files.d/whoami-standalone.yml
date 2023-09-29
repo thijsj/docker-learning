@@ -1,0 +1,26 @@
+
+# File based config
+#
+# Used routers to create rule and bind them to a service
+# Used services to define what the service means
+#
+http:
+  routers:
+    Standalone:
+      rule: "Host(`standalone.docker.localhost`)"
+      service: Standalone
+    AloneTogether:
+      rule: "Host(`together.docker.localhost`)"
+      service: Together
+
+  services:
+    Standalone:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.101:4321"
+
+    Together:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.101:4321"
+          - url: "http://192.168.2.101:4322"

@@ -1,0 +1,17 @@
+
+services:
+  whoami-standalone:
+    # A container that exposes an API to show its IP address
+    image: traefik/whoami
+    command:
+      - --name=Standalone
+    ports:
+      - "4321:80"
+
+  whoami-standalone2:
+    # A container that exposes an API to show its IP address
+    image: traefik/whoami
+    command:
+      - --name=Also alone
+    ports:
+      - "4322:80"
