@@ -1,0 +1,30 @@
+
+entryPoints:
+  web:
+    address: :80
+    http:
+      redirections:
+        entryPoint:
+          scheme: https
+          to: websecure
+
+  websecure:
+    address: :443
+
+certificateResolvers:
+  staging:
+    acme:
+      email: info@example.com
+      storage: /ssl-certs/acme.json
+      # Default: "https://acme-v02.api.letsencrypt.org/directory"
+      caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
+      httpChallenge:
+        entrypoint: web
+
+  production:
+    acme:
+      email: info@example.com
+      storage: /ssl-certs/acme.json
+      caServer: "https://acme-v02.api.letsencrypt.org/directory"
+      httpChallenge:
+        entrypoint: web
